@@ -1,0 +1,238 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    /* centraliza conteúdo horizontalmente */
+    overflow-x: hidden;
+    /* Evita rolagem horizontal */
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* centraliza conteúdo verticalmente */
+}
+
+.navbar {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    /* espaçamento entre elementos */
+    align-items: center;
+    /* centraliza itens verticalmente */
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+}
+
+.navbar-links {
+    display: flex;
+}
+
+.navbar-links a {
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.navbar-links a:hover {
+    background-color: #555;
+}
+
+.main-content {
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.search-bar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+.document-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.document-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.document-thumbnail {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+}
+
+.document-title {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #343a40;
+}
+
+.view-button {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-button:hover {
+    background-color: #5a6268;
+}
+
+/* Estilos do modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 90%;
+    /* Aumenta a largura do modal */
+    max-width: 1000px;
+    /* Define a largura máxima */
+    height: 80%;
+    /* Define a altura do modal */
+    max-height: 90%;
+    /* Define a altura máxima */
+    border-radius: 8px;
+
+}
+
+.modal-content {
+    text-align: center;
+}
+
+.close-button {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* ajuste a posição do ícone para a direita */
+    z-index: 1;
+}
+
+.close-button:hover {
+    background-color: #c82333;
+}
+
+.preview-frame {
+    width: 100%;
+    height: calc(87vh - 90px);
+    /* Ajuste a altura do iframe para ocupar a altura do modal, menos a altura dos botões e margens */
+    border: none;
+    margin-bottom: 10px;
+}
+
+.download-button {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.download-button:hover {
+    background-color: #218838;
+}
+
+.download-status {
+    margin-left: 10px;
+    font-size: 1em;
+    color: #28a745;
+}
+
+
+/* Estilos para a sobreposição */
+.overlay {
+    display: none;
+    /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Fundo preto semitransparente */
+    z-index: 999;
+    /* Atrás do modal */
+}
