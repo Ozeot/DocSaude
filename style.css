@@ -1,6 +1,6 @@
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: #ffffff;
     color: #333;
     margin: 0;
     padding: 0;
@@ -16,7 +16,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* centraliza conteúdo verticalmente */
 }
 
 .navbar {
@@ -24,17 +23,17 @@ body {
     background-color: #333;
     color: #333333;
     padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra para um efeito moderno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed; /* Fixa a navbar no topo da tela */
-    top: 0; /* Alinha a navbar ao topo da página */
-    left: 0; /* Alinha a navbar à esquerda da página */
-    margin: 0; /* Remove margens externas */
-    border-bottom: 2px solid #ddd; /* Adiciona uma linha abaixo da navbar */
-    background: #ffffff; /* Torna o fundo um pouco transparente para o efeito moderno */
-    z-index: 1000; /* Garante que a navbar fique acima do conteúdo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    border-bottom: 2px solid #ddd;
+    background: #ffffff;
+    z-index: 1000;
 }
 
 .navbar-brand {
@@ -49,13 +48,13 @@ body {
     padding: 10px 20px;
     color: #333333;
     text-decoration: none;
-    transition: background-color 0.3s, border-radius 0.3s; /* Adiciona transição para border-radius */
-    border-radius: 4px; /* Adiciona bordas arredondadas por padrão */
+    transition: background-color 0.3s, border-radius 0.3s;
+    border-radius: 4px;
 }
 
 .navbar-links a:hover {
     background-color: #c0e1f4;
-    border-radius: 8px; /* Arredonda o hover */
+    border-radius: 8px;
 }
 
 .main-content {
@@ -67,7 +66,7 @@ body {
     border-radius: 8px;
     position: relative;
     overflow: hidden;
-    padding-top: 15px; /* Adiciona padding-top igual à altura da navbar */
+    padding-top: 15px;
 }
 
 .main-content::before {
@@ -81,7 +80,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.5; /* Ajuste a opacidade conforme necessário */
+    opacity: 0.5;
     z-index: 1;
 }
 
@@ -91,31 +90,24 @@ body {
 }
 
 .search-bar {
-    text-align: center;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    width: 100%;
     margin-bottom: 20px;
 }
 
 .search-bar input[type="text"] {
-    padding: 10px;
-    width: 300px;
+    width: 100%;
+    max-width: 400px; /* Define a largura máxima da caixa de pesquisa */
+    padding: 10px 20px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 25px;
     font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .search-bar button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
-}
-
-.search-bar button:hover {
-    background-color: #0056b3;
+    display: none; /* Oculta o botão de pesquisa, pois não é mais necessário */
 }
 
 .document-list {
@@ -135,19 +127,24 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 10px;
-    padding: 8px; /* Reduz o padding */
-    width: 150px; /* Largura menor */
-    height: 220px; /* Altura menor */
-    width: 200px;
+    padding: 8px;
+    width: 150px;
+    height: 180px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.document-item:hover {
+    transform: scale(1.05); /* Aplica o zoom */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Destaca o item com uma sombra maior */
 }
 
 .document-thumbnail {
     width: 100px;
     height: 100px;
     margin-bottom: 10px;
-    border-radius: 50%;
-    border: 1px solid #ddd;
+    border-radius: 0%;
+    border: 0px solid #ddd;
 }
 
 .document-title {
@@ -174,7 +171,6 @@ body {
     background-color: #5a6268;
 }
 
-/* Estilos do modal */
 .modal {
     display: none;
     position: fixed;
@@ -187,13 +183,9 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     width: 90%;
-    /* Aumenta a largura do modal */
     max-width: 1000px;
-    /* Define a largura máxima */
     height: 130%;
-    /* Define a altura do modal */
     max-height: 78%;
-    /* Define a altura máxima */
     border-radius: 8px;
 }
 
@@ -215,7 +207,6 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    /* ajuste a posição do ícone para a direita */
     z-index: 1;
 }
 
@@ -226,7 +217,6 @@ body {
 .preview-frame {
     width: 100%;
     height: calc(87vh - 130px);
-    /* Ajuste a altura do iframe para ocupar a altura do modal, menos a altura dos botões e margens */
     border: none;
     padding: 10px;
     box-sizing: border-box;
@@ -241,16 +231,16 @@ body {
     font-size: 1em;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s; /* Adiciona transição de transformação */
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .download-button:hover {
     background-color: #218838;
-    transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
+    transform: scale(1.05);
 }
 
 .download-button:active {
-    transform: scale(0.95); /* Diminui ligeiramente o botão ao clicar */
+    transform: scale(0.95);
 }
 
 .download-status {
@@ -259,17 +249,13 @@ body {
     color: #28a745;
 }
 
-/* Estilos para a sobreposição */
 .overlay {
     display: none;
-    /* Inicialmente escondido */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    /* Fundo preto semitransparente */
     z-index: 999;
-    /* Atrás do modal */
 }

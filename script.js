@@ -1,73 +1,28 @@
 const documents = [
     // Documentos
-    {
-        category: "Documentos",
-        title: "Documento 1",
-        url: "https://www.mediafire.com/file/documento1.pdf/file",
-        thumbnail: "https://via.placeholder.com/100"
-    },
-    {
-        category: "Documentos",
-        title: "Documento 2",
-        url: "https://www.mediafire.com/file/documento2.pdf/file",
-        thumbnail: "https://via.placeholder.com/100"
-    },
+    { category: "Documentos", title: "Documento 1", url: "https://www.mediafire.com/file/documento1.pdf/file", thumbnail: "Icon/doc.png" },
+    { category: "Documentos", title: "Documento 2", url: "https://www.mediafire.com/file/documento2.pdf/file", thumbnail: "Icon/doc.png" },
+    { category: "Documentos", title: "Documento 3", url: "https://www.mediafire.com/file/documento3.pdf/file", thumbnail: "Icon/doc.png" },
+    { category: "Documentos", title: "Documento 4", url: "https://www.mediafire.com/file/documento4.pdf/file", thumbnail: "Icon/doc.png" },
+    { category: "Documentos", title: "Documento 5", url: "https://www.mediafire.com/file/documento5.pdf/file", thumbnail: "Icon/doc.png" },
+    { category: "Documentos", title: "Documento 6", url: "https://www.mediafire.com/file/documento6.pdf/file", thumbnail: "Icon/doc.png" },
+    { category: "Documentos", title: "Documento 7", url: "https://www.mediafire.com/file/documento7.pdf/file", thumbnail: "Icon/doc.png" },
 
     // Prontuário
-    {
-        category: "Prontuário",
-        title: "Prontuário 1",
-        url: "https://www.mediafire.com/file/prontuario1.pdf/file",
-        thumbnail: "https://via.placeholder.com/100"
-    },
-    {
-        category: "Prontuário",
-        title: "Prontuário 2",
-        url: "https://www.mediafire.com/file/prontuario2.pdf/file",
-        thumbnail: "https://via.placeholder.com/100"
-    },
+    { category: "Prontuário", title: "Prontuário 1", url: "https://www.mediafire.com/file/prontuario1.pdf/file", thumbnail: "Icon/doc.png" },
+    { category: "Prontuário", title: "Prontuário 2", url: "https://www.mediafire.com/file/prontuario2.pdf/file", thumbnail: "Icon/doc.png" },
 
     // Atestado
-    {
-        category: "Atestado",
-        title: "Atestado 1",
-        url: "https://www.mediafire.com/file/atestado1.pdf/file",
-        thumbnail: "https://via.placeholder.com/100"
-    },
-    {
-        category: "Atestado",
-        title: "Atestado 2",
-        url: "https://www.mediafire.com/file/atestado2.pdf/file",
-        thumbnail: "https://via.placeholder.com/100"
-    },
+    { category: "Atestado", title: "Atestado 1", url: "https://www.mediafire.com/file/atestado1.pdf/file", thumbnail: "Icon/doc.png" },
+    { category: "Atestado", title: "Atestado 2", url: "https://www.mediafire.com/file/atestado2.pdf/file", thumbnail: "Icon/doc.png" },
 
     // Receituário
-    {
-        category: "Receituário",
-        title: "Receituário 1",
-        url: "https://www.mediafire.com/file/receituario1.pdf/file",
-        thumbnail: "https://via.placeholder.com/100"
-    },
-    {
-        category: "Receituário",
-        title: "Receituário 2",
-        url: "https://www.mediafire.com/file/receituario2.pdf/file",
-        thumbnail: "https://via.placeholder.com/100"
-    },
+    { category: "Receituário", title: "Receituário 1", url: "https://www.mediafire.com/file/receituario1.pdf/file", thumbnail: "Icon/doc.png" },
+    { category: "Receituário", title: "Receituário 2", url: "https://www.mediafire.com/file/receituario2.pdf/file", thumbnail: "Icon/doc.png" },
 
     // AIH
-    {
-        category: "AIH",
-        title: "AIH",
-        url: "https://drive.google.com/file/d/1evnwtewpd9mz4aywuhaUf_2p636O63vw/preview",
-        thumbnail: "https://via.placeholder.com/100"
-    },
-    {
-        category: "AIH",
-        title: "AIH 2",
-        url: "https://www.mediafire.com/file/iah2.pdf/file",
-        thumbnail: "https://via.placeholder.com/100"
-    }
+    { category: "AIH", title: "AIH", url: "https://drive.google.com/file/d/1evnwtewpd9mz4aywuhaUf_2p636O63vw/preview", thumbnail: "Icon/doc.png" },
+    { category: "AIH", title: "AIH 2", url: "https://www.mediafire.com/file/iah2.pdf/file", thumbnail: "Icon/doc.png" }
 ];
 
 function loadDocuments(documentArray) {
@@ -160,18 +115,10 @@ function filterByCategory(category) {
 // Carrega todos os documentos ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     loadDocuments(documents);
- 
-    // Event listener para o botão de pesquisa
-    const searchButton = document.querySelector('.search-bar button');
-    searchButton.addEventListener('click', searchDocuments);
 
-    // Event listener para o input de pesquisa com 'Enter'
+    // Event listener para o input de pesquisa, executando a pesquisa enquanto o usuário digita
     const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('keydown', event => {
-        if (event.key === 'Enter') {
-            searchDocuments();
-        }
-    });
+    searchInput.addEventListener('input', searchDocuments);
 
     // Event listeners para os links de categoria
     document.querySelectorAll('.navbar-links a').forEach(link => {
