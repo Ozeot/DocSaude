@@ -70,8 +70,6 @@ const documents = [
     }
 ];
 
-let recentDocuments = []; // Array para armazenar documentos recentemente pesquisados
-
 function loadDocuments(documentArray) {
     const documentList = document.getElementById('documentList');
     documentList.innerHTML = ''; // Limpa a lista atual
@@ -123,32 +121,11 @@ function openPreview(doc) {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        downloadStatus.textContent = 'Download iniciado...';
     };
 
     // Exibe o modal de pré-visualização e a sobreposição
     previewModal.style.display = 'block';
     overlay.style.display = 'block';
-
-    // Adiciona o documento aberto aos recentes
-    if (!recentDocuments.some(d => d.title === doc.title)) {
-        recentDocuments.unshift(doc);
-        if (recentDocuments.length > 5) {
-            recentDocuments.pop();
-        }
-        updateRecentlyOpened();
-    }
-}
-
-function updateRecentlyOpened() {
-    const recentList = document.getElementById('recentlyOpened');
-    recentList.innerHTML = '';
-
-    recentDocuments.forEach(doc => {
-        const listItem = document.createElement('li');
-        listItem.textContent = doc.title;
-        recentList.appendChild(listItem);
-    });
 }
 
 function closePreview() {
@@ -168,10 +145,6 @@ function searchDocuments() {
     );
 
     loadDocuments(filteredDocuments); // Carrega documentos filtrados
-
-    // Atualiza documentos recentemente abertos
-    recentDocuments = filteredDocuments.slice(0, 5);
-    updateRecentlyOpened();
 }
 
 // Função para filtrar documentos por categoria
@@ -210,7 +183,4 @@ document.addEventListener('DOMContentLoaded', () => {
             link.classList.add('active');
         });
     });
-
-    // Atualiza a seção "Recentemente Abertos" ao carregar a página
-    updateRecentlyOpened();
 });
