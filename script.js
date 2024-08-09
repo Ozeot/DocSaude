@@ -100,6 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const overlay = document.getElementById('overlay');
     overlay.style.display = 'none';
+
+    // Fechar modal com a tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closePreview();
+        }
+    });
 });
 
 function searchDocuments() {
