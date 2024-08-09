@@ -93,6 +93,15 @@ function closePreview() {
     overlay.style.display = 'none';
 }
 
+// Certifique-se de que o modal não está visível quando a página é carregada
+document.addEventListener('DOMContentLoaded', () => {
+    const previewModal = document.getElementById('previewModal');
+    previewModal.style.display = 'none';
+
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = 'none';
+});
+
 function searchDocuments() {
     const input = document.getElementById('searchInput').value.toLowerCase();
     const filteredDocuments = documents.filter(doc =>
