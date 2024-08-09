@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DocSaude - Portal para visualizar e gerenciar documentos de saúde.">
     <title>DocSaude - UPA Benevides</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,12 +12,12 @@
 <body> 
     <div class="overlay" id="overlay"></div>
     <div class="container">
-        <div id="previewModal" class="modal">
+        <div id="previewModal" class="modal" aria-labelledby="previewModalLabel" aria-hidden="true">
             <div class="modal-content">
-                                <span id="closeButton" class="close-button" onclick="closePreview()">&times;</span>
-                <iframe id="previewFrame" class="preview-frame" src="" frameborder="0"></iframe>
-                <button id="downloadButton" class="download-button" onclick="downloadDocument()">Download</button>
-            </div>
+                <span id="closeButton" class="close-button" onclick="closePreview()" aria-label="Fechar">&times;</span>
+                <iframe id="previewFrame" class="preview-frame" src="" frameborder="0" aria-labelledby="previewFrameLabel"></iframe>
+                <button id="downloadButton" class="download-button" onclick="downloadDocument()" aria-label="Baixar documento">Download</button>
+            </div> 
         </div>
 
         <div class="navbar">
@@ -31,8 +32,6 @@
         </div>
 
         <div class="main-content">
-            <h1></h1>
-            <h1></h1>
             <!-- Barra de Pesquisa -->
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Digite para buscar documentos...">

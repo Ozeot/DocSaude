@@ -19,9 +19,9 @@ body {
 }
 
 .navbar {
-    width: 100%;
+    width: 99%;
     background-color: #333;
-    color: #333333;
+    color: #333;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -34,6 +34,7 @@ body {
     border-bottom: 2px solid #ddd;
     background: #ffffff;
     z-index: 1000;
+    overflow: hidden;
 }
 
 .navbar-brand {
@@ -42,11 +43,12 @@ body {
 
 .navbar-links {
     display: flex;
+    flex-wrap: nowrap; /* Garante que os itens não quebrem para a linha seguinte */
 }
 
 .navbar-links a {
-    padding: 10px 20px;
-    color: #333333;
+    padding: 10px 15px;
+    color: #333;
     text-decoration: none;
     transition: background-color 0.3s, border-radius 0.3s;
     border-radius: 4px;
@@ -81,7 +83,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0.5;
-    z-index: 1;
+    z-index: 1; 
 }
 
 .main-content > * {
@@ -91,23 +93,20 @@ body {
 
 .search-bar {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
+    justify-content: center;
     width: 100%;
     margin-bottom: 20px;
 }
 
 .search-bar input[type="text"] {
     width: 100%;
-    max-width: 400px; /* Define a largura máxima da caixa de pesquisa */
+    max-width: 400px;
     padding: 10px 20px;
     border: 1px solid #ccc;
     border-radius: 25px;
     font-size: 1em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.search-bar button {
-    display: none; /* Oculta o botão de pesquisa, pois não é mais necessário */
+    text-align: center;
 }
 
 .document-list {
@@ -135,8 +134,8 @@ body {
 }
 
 .document-item:hover {
-    transform: scale(1.05); /* Aplica o zoom */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Destaca o item com uma sombra maior */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .document-thumbnail {
@@ -144,7 +143,7 @@ body {
     height: 100px;
     margin-bottom: 10px;
     border-radius: 0%;
-    border: 0px solid #ddd;
+    border: 0;
 }
 
 .document-title {

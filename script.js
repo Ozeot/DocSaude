@@ -50,7 +50,7 @@ function loadDocuments(documentArray) {
         listItem.appendChild(title);
         listItem.appendChild(viewButton);
 
-        documentList.appendChild(listItem);
+        documentList.appendChild(listItem); 
     });
 }
 
@@ -60,39 +60,39 @@ function openPreview(doc) {
     const downloadButton = document.getElementById('downloadButton');
     const overlay = document.getElementById('overlay');
 
-    // Transformar o URL do Google Drive para visualização
-    const viewUrl = doc.url.replace('/view?usp=sharing', '/preview');
+    // Modifica URL para visualização no Google Drive se necessário
+    const viewUrl = doc.url.includes('drive.google.com') ? doc.url.replace('/view?usp=sharing', '/preview') : doc.url;
     
-    // Configura o iframe para exibir o documento PDF
     previewFrame.src = viewUrl;
 
-    // Configura o botão de download para baixar o PDF ao clicar
     downloadButton.onclick = function() {
-        const fileId = doc.url.match(/\/d\/(.+?)\//)[1];
-        const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        link.download = doc.title + '.pdf'; // Define o nome do arquivo para download
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const fileId = doc.url.match(/\/d\/(.+?)\//)?.[1];
+        if (fileId) {
+            const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = `${doc.title}.pdf`; // Define o nome do arquivo para download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            alert('Não foi possível gerar o link de download.');
+        }
     };
 
-    // Exibe o modal de pré-visualização e a sobreposição
     previewModal.style.display = 'block';
     overlay.style.display = 'block';
+    previewModal.focus(); // Foco no modal para acessibilidade
 }
 
 function closePreview() {
     const previewModal = document.getElementById('previewModal');
     const overlay = document.getElementById('overlay');
 
-    // Esconde o modal de pré-visualização e a sobreposição
     previewModal.style.display = 'none';
     overlay.style.display = 'none';
 }
 
-// Função para filtrar documentos com base no texto de pesquisa
 function searchDocuments() {
     const input = document.getElementById('searchInput').value.toLowerCase();
     const filteredDocuments = documents.filter(doc =>
@@ -102,7 +102,6 @@ function searchDocuments() {
     loadDocuments(filteredDocuments); // Carrega documentos filtrados
 }
 
-// Função para filtrar documentos por categoria
 function filterByCategory(category) {
     if (category === "Todos") {
         loadDocuments(documents); // Mostra todos os documentos
@@ -112,15 +111,12 @@ function filterByCategory(category) {
     }
 }
 
-// Carrega todos os documentos ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     loadDocuments(documents);
 
-    // Event listener para o input de pesquisa, executando a pesquisa enquanto o usuário digita
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', searchDocuments);
 
-    // Event listeners para os links de categoria
     document.querySelectorAll('.navbar-links a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -129,5 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.navbar-links a').forEach(l => l.classList.remove('active'));
             link.classList.add('active');
         });
+    });
+
+    // Fechar modal com a tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closePreview();
+        }
     });
 });
