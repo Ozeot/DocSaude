@@ -123,14 +123,15 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column; /* Alinha os itens verticalmente */
     margin: 10px;
     padding: 8px;
     width: 150px;
-    height: 180px;
+    height: 180px; 
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse o container */
 }
 
 .document-item:hover {
@@ -139,8 +140,8 @@ body {
 }
 
 .document-thumbnail {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     margin-bottom: 10px;
     border-radius: 0%;
     border: 0;
@@ -148,12 +149,15 @@ body {
 
 .document-title {
     font-size: 1.1em;
-    margin-bottom: 10px;
+    flex-grow: 1; /* Faz o título ocupar o espaço restante */
+    overflow: hidden; /* Esconde o texto que não cabe na caixa */
+    text-overflow: ellipsis; /* Adiciona reticências (...) ao final do texto, se for muito longo */
     color: #343a40;
+    margin-right: 10px; /* Espaçamento entre o título e o botão */
 }
 
 .view-button {
-    background-color: #6c757d;
+    background-color: #6c757d; 
     border: none;
     color: white;
     padding: 8px 12px;
@@ -164,6 +168,9 @@ body {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    flex-shrink: 0; /* Evita que o botão encolha */
+    margin-top: auto; /* Garante que o botão fique na parte inferior */
+    width: 100%; /* Faz o botão ocupar toda a largura do container */
 }
 
 .view-button:hover {

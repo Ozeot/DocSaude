@@ -1,12 +1,20 @@
 const documents = [
     // Documentos
-    { category: "Documentos", title: "Notif. Violência Interpessoal", url: "https://drive.google.com/file/d/1LL5D4SqhsXumrm4FOTU7K1tSd5NGGYDR/preview", thumbnail: "Icon/doc.png" },
+    { category: "Documentos", title: "Documento 1", url: "https://www.mediafire.com/file/documento1.pdf/file", thumbnail: "Icon/doc.png" },
     { category: "Documentos", title: "Documento 2", url: "https://www.mediafire.com/file/documento2.pdf/file", thumbnail: "Icon/doc.png" },
     { category: "Documentos", title: "Documento 3", url: "https://www.mediafire.com/file/documento3.pdf/file", thumbnail: "Icon/doc.png" },
     { category: "Documentos", title: "Documento 4", url: "https://www.mediafire.com/file/documento4.pdf/file", thumbnail: "Icon/doc.png" },
     { category: "Documentos", title: "Documento 5", url: "https://www.mediafire.com/file/documento5.pdf/file", thumbnail: "Icon/doc.png" },
     { category: "Documentos", title: "Documento 6", url: "https://www.mediafire.com/file/documento6.pdf/file", thumbnail: "Icon/doc.png" },
     { category: "Documentos", title: "Documento 7", url: "https://www.mediafire.com/file/documento7.pdf/file", thumbnail: "Icon/doc.png" },
+
+    // Ficha 
+    { category: "Ficha", title: "Notif. Violência Interpessoal", url: "https://drive.google.com/file/d/1iB0PDujEcmUQnhjD7kM3RZzbICQXfQNW/preview", thumbnail: "Icon/doc.png" },
+    { category: "Ficha", title: "Notif. Suspeito de COVID 19", url: "https://drive.google.com/file/d/1bWaKim7Fq6rhVizlWhL63B7Gt4S7zHzt/preview", thumbnail: "Icon/doc.png" },
+    { category: "Ficha", title: "Notif. de Acidente de Trabalho", url: "https://drive.google.com/file/d/1wcFSrT6fu9HbwxTgTkRG3U8L9J-Hiusx/preview", thumbnail: "Icon/doc.png" },
+    { category: "Ficha", title: "Notif. Individual", url: "https://drive.google.com/file/d/1T037kqrqkaJzO8HirBn-xaqcpweKSoqm/preview", thumbnail: "Icon/doc.png" },
+    { category: "Ficha", title: "Notif. de Varicela", url: "https://drive.google.com/file/d/19VwyvHIPgXpwccuDsOXZbIigwJ4FCJDc/preview", thumbnail: "Icon/doc.png" },
+    { category: "Ficha", title: "Invest. Dengue/Febre de Chikungunya", url: "https://drive.google.com/file/d/1zXzKB_C1chDu9DUK8i874qNk5WkIGv8v/preview", thumbnail: "Icon/doc.png" },
 
     // Prontuário
     { category: "Prontuário", title: "Prontuário 1", url: "https://www.mediafire.com/file/prontuario1.pdf/file", thumbnail: "Icon/doc.png" },
@@ -21,7 +29,7 @@ const documents = [
     { category: "Receituário", title: "Receituário 2", url: "https://www.mediafire.com/file/receituario2.pdf/file", thumbnail: "Icon/doc.png" },
 
     // AIH
-    { category: "AIH", title: "AIH", url: "https://drive.google.com/file/d/1evnwtewpd9mz4aywuhaUf_2p636O63vw/preview", thumbnail: "Icon/doc.png" },
+    { category: "AIH", title: "Laudo de AIH - Autorização de Inter. Hospitalar", url: "https://drive.google.com/file/d/1Np7_yULidp0pI7FqfXboYBhBQHNhkoj1/preview", thumbnail: "Icon/doc.png" },
     { category: "AIH", title: "AIH 2", url: "https://www.mediafire.com/file/iah2.pdf/file", thumbnail: "Icon/doc.png" }
 ];
 
@@ -50,7 +58,7 @@ function loadDocuments(documentArray) {
         listItem.appendChild(title);
         listItem.appendChild(viewButton);
 
-        documentList.appendChild(listItem); 
+        documentList.appendChild(listItem);
     });
 }
 
@@ -62,10 +70,10 @@ function openPreview(doc) {
 
     // Modifica URL para visualização no Google Drive se necessário
     const viewUrl = doc.url.includes('drive.google.com') ? doc.url.replace('/view?usp=sharing', '/preview') : doc.url;
-    
+
     previewFrame.src = viewUrl;
 
-    downloadButton.onclick = function() {
+    downloadButton.onclick = function () {
         const fileId = doc.url.match(/\/d\/(.+?)\//)?.[1];
         if (fileId) {
             const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
@@ -143,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Fechar modal com a tecla ESC
+    // Fechar modal com a tecla ESC 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closePreview();
